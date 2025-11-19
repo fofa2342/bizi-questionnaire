@@ -35,13 +35,6 @@ app.post('/submit', (req, res) => {
 
     const data = req.body;
 
-    // Ensure the price is a number or null
-    if (data.q14_price_willing_to_pay === '' || data.q14_price_willing_to_pay === undefined) {
-        data.q14_price_willing_to_pay = null;
-    } else {
-        data.q14_price_willing_to_pay = parseInt(data.q14_price_willing_to_pay, 10);
-    }
-    
     // Ensure boolean is handled correctly
     data.q12_whatsapp_usage = data.q12_whatsapp_usage === '1';
 
