@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizi Questionnaire</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #111827;
+            margin: 0;
+            padding: 2em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 0.5em;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-top: 2em;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5em;
+        }
+        label {
+            display: block;
+            margin-top: 1.5em;
+            font-weight: 500;
+            margin-bottom: 0.5em;
+        }
+        textarea, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 0.75em;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375em;
+            box-sizing: border-box;
+        }
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75em 1.5em;
+            border: none;
+            border-radius: 0.375em;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 2em;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        .price-suggestion {
+            background-color: #e5e7eb;
+            color: #111827;
+            margin-top: 0.5em;
+            margin-right: 0.5em;
+        }
+        .price-suggestion:hover {
+            background-color: #d1d5db;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 1em;
+            }
+            .container {
+                padding: 1em;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bizi Questionnaire</h1>
+        <form action="/submit" method="POST">
+            <h2>Partie 1: Contexte</h2>
+            <label for="q1_boutique_description">1. Pouvez-vous me parler un peu de votre boutique ? Qu'est-ce que vous vendez principalement ?</label>
+            <textarea id="q1_boutique_description" name="q1_boutique_description" rows="4"></textarea>
+
+            <label for="q2_experience_duration">2. Depuis combien de temps avez-vous ce commerce ?</label>
+            <input type="text" id="q2_experience_duration" name="q2_experience_duration">
+
+            <label for="q2_help_status">Travaillez seul(e) ou vous avez de l'aide?</label>
+            <input type="text" id="q2_help_status" name="q2_help_status">
+
+            <label for="q3_daily_difficulty">3. Qu'est-ce qui est le plus difficile ou le plus frustrant dans la gestion de votre commerce au quotidien ?</label>
+            <textarea id="q3_daily_difficulty" name="q3_daily_difficulty" rows="4"></textarea>
+
+            <h2>Partie 2: Le fonctionnement actuel</h2>
+            <label for="q4_sales_process">4. Quand vous faites une vente, comment ça se passe ? Vous la notez quelque part ?</label>
+            <textarea id="q4_sales_process" name="q4_sales_process" rows="4"></textarea>
+
+            <label for="q5_stock_tracking">5. Comment vous suivez votre stock?</label>
+            <textarea id="q5_stock_tracking" name="q5_stock_tracking" rows="4"></textarea>
+
+            <label for="q6_product_sourcing_pricing">6. Comment choisissez-vous les produits que vous vendez ? Comment trouvez-vous vos fournisseurs ? Et les prix, comment vous les fixez?</label>
+            <textarea id="q6_product_sourcing_pricing" name="q6_product_sourcing_pricing" rows="4"></textarea>
+
+            <h2>Partie 3: Les difficultés</h2>
+            <label for="q7_stock_management_time">7. Qu'est-ce qui vous prend le plus de temps dans la gestion de votre stock ?</label>
+            <textarea id="q7_stock_management_time" name="q7_stock_management_time" rows="4"></textarea>
+
+            <label for="q8_accounting_time">8. Combien de temps par semaine passez-vous à faire vos comptes ou à estimer vos bénéfices et pertes ?</label>
+            <input type="text" id="q8_accounting_time" name="q8_accounting_time">
+
+            <label for="q9_profitable_products_stock_errors">9. Savez-vous quels sont les produits les plus rentables de votre stock? Est-ce que ça vous est déjà arrivé de commander trop ou pas assez ? Pourquoi ? Et comment gérez-vous ces situations ?</label>
+            <textarea id="q9_profitable_products_stock_errors" name="q9_profitable_products_stock_errors" rows="4"></textarea>
+
+            <label for="q10_credit_management">10. Avez-vous des clients qui achètent à crédit ? Comment vous vous organisez pour les relancer et récupérer l'argent ?</label>
+            <textarea id="q10_credit_management" name="q10_credit_management" rows="4"></textarea>
+
+            <h2>Partie 4: L'intérêt d'une solution numérique</h2>
+            <label for="q11_ideal_assistant_features">11. Si vous aviez un assistant idéal pour vous aider dans votre boutique, qu'aimeriez-vous qu'il fasse ?</label>
+            <textarea id="q11_ideal_assistant_features" name="q11_ideal_assistant_features" rows="4"></textarea>
+
+            <label for="q12_whatsapp_usage">12. Vous utilisez WhatsApp ?</label>
+            <input type="radio" id="q12_whatsapp_usage_yes" name="q12_whatsapp_usage" value="1"> Oui
+            <input type="radio" id="q12_whatsapp_usage_no" name="q12_whatsapp_usage" value="0"> Non
+
+            <label for="q12_whatsapp_business_usage">Vous vous en servez aussi pour votre commerce, avec vos clients ou vos fournisseurs ?</label>
+            <textarea id="q12_whatsapp_business_usage" name="q12_whatsapp_business_usage" rows="2"></textarea>
+
+            <label for="q13_whatsapp_assistant_feedback">13. Imaginez maintenant un petit assistant sur WhatsApp... Qu'en pensez-vous ?</label>
+            <textarea id="q13_whatsapp_assistant_feedback" name="q13_whatsapp_assistant_feedback" rows="4"></textarea>
+
+            <h2>Partie 5: La disposition à payer</h2>
+            <label for="q14_price_willing_to_pay">14. Combien seriez-vous prêt(e) à payer par mois pour ce service ?</label>
+            <input type="number" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay">
+            <div>
+                <button type="button" class="price-suggestion" onclick="setPrice(2500)">2500</button>
+                <button type="button" class="price-suggestion" onclick="setPrice(5000)">5000</button>
+                <button type="button" class="price-suggestion" onclick="setPrice(10000)">10000</button>
+            </div>
+
+            <label for="q15_conditions_for_paying">15. Et si vous ne seriez pas prêt(e) à payer, qu'est-ce qu'il devrait faire pour que ce soit intéressant, et à quel prix ?</label>
+            <textarea id="q15_conditions_for_paying" name="q15_conditions_for_paying" rows="4"></textarea>
+
+            <h2>Partie 6: Test du produit</h2>
+            <label for="q16_whatsapp_number">16. Est-ce que je peux avoir votre numéro WhatsApp pour vous envoyer une version gratuite à tester?</label>
+            <input type="text" id="q16_whatsapp_number" name="q16_whatsapp_number">
+
+            <label for="q17_other_interested_businesses">17. Connaissez-vous d'autres commerces qui pourraient être intéressés par ce type d'outil?</label>
+            <textarea id="q17_other_interested_businesses" name="q17_other_interested_businesses" rows="4"></textarea>
+
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function setPrice(price) {
+            document.getElementById('q14_price_willing_to_pay').value = price;
+        }
+    </script>
+</body>
+</html>
