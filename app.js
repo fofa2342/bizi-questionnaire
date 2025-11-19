@@ -19,8 +19,10 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
+        console.error('Database connection failed:', err);
         throw err;
     }
+    console.log('MySQL connected...');
 });
 
 app.get('/', (req, res) => {
@@ -28,12 +30,33 @@ app.get('/', (req, res) => {
 });
 
 app.post('/submit', (req, res) => {
+    console.log('New submission received:');
+    console.log(req.body);
+
     const data = req.body;
+
+    // Ensure the price is a number or null
+    if (data.q14_price_willing_to_pay === '' || data.q14_price_willing_to_pay === undefined) {
+        data.q14_price_willing_to_pay = null;
+    } else {
+        data.q14_price_willing_to_pay = parseInt(data.q14_price_willing_to_pay, 10);
+    }
+    
+    // Ensure boolean is handled correctly
+    data.q12_whatsapp_usage = data.q12_whatsapp_usage === '1';
+
+
     const sql = 'INSERT INTO responses SET ?';
     db.query(sql, data, (err, result) => {
-        if (err) throw err;
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Error saving response.');
+        }
+        console.log('Response saved successfully!');
         res.send('Response saved!');
     });
 });
 
-app.listen(port);
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+});

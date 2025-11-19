@@ -64,15 +64,6 @@
         button:hover {
             background-color: #2563eb;
         }
-        .price-suggestion {
-            background-color: #e5e7eb;
-            color: #111827;
-            margin-top: 0.5em;
-            margin-right: 0.5em;
-        }
-        .price-suggestion:hover {
-            background-color: #d1d5db;
-        }
         @media (max-width: 600px) {
             body {
                 padding: 1em;
@@ -145,12 +136,7 @@
 
             <h2>Partie 5: La disposition à payer</h2>
             <label for="q14_price_willing_to_pay">14. Combien seriez-vous prêt(e) à payer par mois pour ce service ?</label>
-            <input type="number" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay">
-            <div>
-                <button type="button" class="price-suggestion" onclick="setPrice(2500)">2500</button>
-                <button type="button" class="price-suggestion" onclick="setPrice(5000)">5000</button>
-                <button type="button" class="price-suggestion" onclick="setPrice(10000)">10000</button>
-            </div>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay">
 
             <label for="q15_conditions_for_paying">15. Et si vous ne seriez pas prêt(e) à payer, qu'est-ce qu'il devrait faire pour que ce soit intéressant, et à quel prix ?</label>
             <textarea id="q15_conditions_for_paying" name="q15_conditions_for_paying" rows="4"></textarea>
@@ -166,11 +152,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-
-    <script>
-        function setPrice(price) {
-            document.getElementById('q14_price_willing_to_pay').value = price;
-        }
-    </script>
 </body>
 </html>
