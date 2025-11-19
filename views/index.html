@@ -4,177 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bizi Questionnaire</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f3f4f6;
-            color: #111827;
-            margin: 0;
-            padding: 2em;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 2em;
-            border-radius: 0.5em;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
-        h1 {
-            font-size: 2em;
-            font-weight: 600;
-            margin-bottom: 1em;
-        }
-        h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-top: 2em;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 0.5em;
-        }
-        label {
-            display: block;
-            margin-top: 1.5em;
-            font-weight: 500;
-            margin-bottom: 0.5em;
-        }
-        textarea, input[type="text"], input[type="number"], input[type="range"] {
-            width: 100%;
-            padding: 0.75em;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375em;
-            box-sizing: border-box;
-        }
-        input[type="range"] {
-            padding: 0;
-        }
-        textarea:focus, input:focus, input[type="range"]:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-        button {
-            background-color: #3b82f6;
-            color: white;
-            padding: 0.75em 1.5em;
-            border: none;
-            border-radius: 0.375em;
-            font-size: 1em;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 2em;
-        }
-        button:hover {
-            background-color: #2563eb;
-        }
-        .slider-container {
-            display: flex;
-            align-items: center;
-            gap: 1em;
-        }
-        .slider-container output {
-            font-weight: 600;
-            background-color: #f3f4f6;
-            padding: 0.5em 1em;
-            border-radius: 0.375em;
-            min-width: 100px; /* Adjusted min-width for larger numbers */
-            text-align: center;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 1em;
-            }
-            .container {
-                padding: 1em;
-            }
-            h1 {
-                font-size: 1.5em;
-            }
-            h2 {
-                font-size: 1.2em;
-            }
-            .slider-container {
-                flex-direction: column; /* Stack items vertically */
-                align-items: stretch; /* Stretch items to fill width */
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Bizi Questionnaire</h1>
-        <form action="/submit" method="POST">
-            <h2>Partie 1: Contexte</h2>
-            <label for="q1_boutique_description">1. Pouvez-vous me parler un peu de votre boutique ? Qu'est-ce que vous vendez principalement ?</label>
-            <textarea id="q1_boutique_description" name="q1_boutique_description" rows="4" required></textarea>
-
-            <label for="q2_experience_duration">2. Depuis combien de temps avez-vous ce commerce ?</label>
-            <input type="text" id="q2_experience_duration" name="q2_experience_duration" required>
-
-            <label for="q2_help_status">Travaillez seul(e) ou vous avez de l'aide?</label>
-            <input type="text" id="q2_help_status" name="q2_help_status" required>
-
-            <label for="q3_daily_difficulty">3. Qu'est-ce qui est le plus difficile ou le plus frustrant dans la gestion de votre commerce au quotidien ?</label>
-            <textarea id="q3_daily_difficulty" name="q3_daily_difficulty" rows="4" required></textarea>
-
-            <h2>Partie 2: Le fonctionnement actuel</h2>
-            <label for="q4_sales_process">4. Quand vous faites une vente, comment ça se passe ? Vous la notez quelque part ?</label>
-            <textarea id="q4_sales_process" name="q4_sales_process" rows="4" required></textarea>
-
-            <label for="q5_stock_tracking">5. Comment vous suivez votre stock?</label>
-            <textarea id="q5_stock_tracking" name="q5_stock_tracking" rows="4" required></textarea>
-
-            <label for="q6_product_sourcing_pricing">6. Comment choisissez-vous les produits que vous vendez ? Comment trouvez-vous vos fournisseurs ? Et les prix, comment vous les fixez?</label>
-            <textarea id="q6_product_sourcing_pricing" name="q6_product_sourcing_pricing" rows="4" required></textarea>
-
-            <h2>Partie 3: Les difficultés</h2>
-            <label for="q7_stock_management_time">7. Qu'est-ce qui vous prend le plus de temps dans la gestion de votre stock ?</label>
-            <textarea id="q7_stock_management_time" name="q7_stock_management_time" rows="4" required></textarea>
-
-            <label for="q8_accounting_time">8. Combien de temps par semaine passez-vous à faire vos comptes ou à estimer vos bénéfices et pertes ?</label>
-            <input type="text" id="q8_accounting_time" name="q8_accounting_time" required>
-
-            <label for="q9_profitable_products_stock_errors">9. Savez-vous quels sont les produits les plus rentables de votre stock? Est-ce que ça vous est déjà arrivé de commander trop ou pas assez ? Pourquoi ? Et comment gérez-vous ces situations ?</label>
-            <textarea id="q9_profitable_products_stock_errors" name="q9_profitable_products_stock_errors" rows="4" required></textarea>
-
-            <label for="q10_credit_management">10. Avez-vous des clients qui achètent à crédit ? Comment vous vous organisez pour les relancer et récupérer l'argent ?</label>
-            <textarea id="q10_credit_management" name="q10_credit_management" rows="4" required></textarea>
-
-            <h2>Partie 4: L'intérêt d'une solution numérique</h2>
-            <label for="q11_ideal_assistant_features">11. Si vous aviez un assistant idéal pour vous aider dans votre boutique, qu'aimeriez-vous qu'il fasse ?</label>
-            <textarea id="q11_ideal_assistant_features" name="q11_ideal_assistant_features" rows="4" required></textarea>
-
-            <label>12. Vous utilisez WhatsApp ?</label>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold mb-6">Bizi Questionnaire</h1>
+        <form action="/submit" method="POST" class="space-y-6">
             <div>
-                <input type="radio" id="q12_whatsapp_usage_yes" name="q12_whatsapp_usage" value="1" required> <label for="q12_whatsapp_usage_yes">Oui</label>
-                <input type="radio" id="q12_whatsapp_usage_no" name="q12_whatsapp_usage" value="0"> <label for="q12_whatsapp_usage_no">Non</label>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 1: Contexte</h2>
+                <label for="q1_boutique_description" class="block mt-6 font-medium mb-2">1. Pouvez-vous me parler un peu de votre boutique ? Qu'est-ce que vous vendez principalement ?</label>
+                <textarea id="q1_boutique_description" name="q1_boutique_description" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+                <label for="q2_experience_duration" class="block mt-6 font-medium mb-2">2. Depuis combien de temps avez-vous ce commerce ?</label>
+                <input type="text" id="q2_experience_duration" name="q2_experience_duration" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="q2_help_status" class="block mt-6 font-medium mb-2">Travaillez seul(e) ou vous avez de l'aide?</label>
+                <input type="text" id="q2_help_status" name="q2_help_status" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="q3_daily_difficulty" class="block mt-6 font-medium mb-2">3. Qu'est-ce qui est le plus difficile ou le plus frustrant dans la gestion de votre commerce au quotidien ?</label>
+                <textarea id="q3_daily_difficulty" name="q3_daily_difficulty" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
 
-            <label for="q12_whatsapp_business_usage">Vous vous en servez aussi pour votre commerce, avec vos clients ou vos fournisseurs ?</label>
-            <textarea id="q12_whatsapp_business_usage" name="q12_whatsapp_business_usage" rows="2" required></textarea>
+            <div>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 2: Le fonctionnement actuel</h2>
+                <label for="q4_sales_process" class="block mt-6 font-medium mb-2">4. Quand vous faites une vente, comment ça se passe ? Vous la notez quelque part ?</label>
+                <textarea id="q4_sales_process" name="q4_sales_process" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
-            <label for="q13_whatsapp_assistant_feedback">13. Imaginez maintenant un petit assistant sur WhatsApp... Qu'en pensez-vous ?</label>
-            <textarea id="q13_whatsapp_assistant_feedback" name="q13_whatsapp_assistant_feedback" rows="4" required></textarea>
+                <label for="q5_stock_tracking" class="block mt-6 font-medium mb-2">5. Comment vous suivez votre stock?</label>
+                <textarea id="q5_stock_tracking" name="q5_stock_tracking" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
-            <h2>Partie 5: La disposition à payer</h2>
-            <label for="q14_price_willing_to_pay">14. Combien seriez-vous prêt(e) à payer par mois pour ce service ?</label>
-            <div class="slider-container">
-                <input type="range" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay" min="0" max="500000" step="5000" value="50000" oninput="priceOutput.value = this.value + ' FCFA'">
-                <output id="priceOutput" for="q14_price_willing_to_pay">50000 FCFA</output>
+                <label for="q6_product_sourcing_pricing" class="block mt-6 font-medium mb-2">6. Comment choisissez-vous les produits que vous vendez ? Comment trouvez-vous vos fournisseurs ? Et les prix, comment vous les fixez?</label>
+                <textarea id="q6_product_sourcing_pricing" name="q6_product_sourcing_pricing" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
 
-            <label for="q15_conditions_for_paying">15. Et si vous ne seriez pas prêt(e) à payer, qu'est-ce qu'il devrait faire pour que ce soit intéressant, et à quel prix ?</label>
-            <textarea id="q15_conditions_for_paying" name="q15_conditions_for_paying" rows="4" required></textarea>
+            <div>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 3: Les difficultés</h2>
+                <label for="q7_stock_management_time" class="block mt-6 font-medium mb-2">7. Qu'est-ce qui vous prend le plus de temps dans la gestion de votre stock ?</label>
+                <textarea id="q7_stock_management_time" name="q7_stock_management_time" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
-            <h2>Partie 6: Test du produit</h2>
-            <label for="q16_whatsapp_number">16. Est-ce que je peux avoir votre numéro WhatsApp pour vous envoyer une version gratuite à tester?</label>
-            <input type="text" id="q16_whatsapp_number" name="q16_whatsapp_number" required>
+                <label for="q8_accounting_time" class="block mt-6 font-medium mb-2">8. Combien de temps par semaine passez-vous à faire vos comptes ou à estimer vos bénéfices et pertes ?</label>
+                <input type="text" id="q8_accounting_time" name="q8_accounting_time" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-            <label for="q17_other_interested_businesses">17. Connaissez-vous d'autres commerces qui pourraient être intéressés par ce type d'outil?</label>
-            <textarea id="q17_other_interested_businesses" name="q17_other_interested_businesses" rows="4" required></textarea>
+                <label for="q9_profitable_products_stock_errors" class="block mt-6 font-medium mb-2">9. Savez-vous quels sont les produits les plus rentables de votre stock? Est-ce que ça vous est déjà arrivé de commander trop ou pas assez ? Pourquoi ? Et comment gérez-vous ces situations ?</label>
+                <textarea id="q9_profitable_products_stock_errors" name="q9_profitable_products_stock_errors" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
-            <br><br>
-            <button type="submit">Submit</button>
+                <label for="q10_credit_management" class="block mt-6 font-medium mb-2">10. Avez-vous des clients qui achètent à crédit ? Comment vous vous organisez pour les relancer et récupérer l'argent ?</label>
+                <textarea id="q10_credit_management" name="q10_credit_management" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 4: L'intérêt d'une solution numérique</h2>
+                <label for="q11_ideal_assistant_features" class="block mt-6 font-medium mb-2">11. Si vous aviez un assistant idéal pour vous aider dans votre boutique, qu'aimeriez-vous qu'il fasse ?</label>
+                <textarea id="q11_ideal_assistant_features" name="q11_ideal_assistant_features" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+                <label class="block mt-6 font-medium mb-2">12. Vous utilisez WhatsApp ?</label>
+                <div class="flex items-center space-x-4">
+                    <input type="radio" id="q12_whatsapp_usage_yes" name="q12_whatsapp_usage" value="1" required class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                    <label for="q12_whatsapp_usage_yes">Oui</label>
+                    <input type="radio" id="q12_whatsapp_usage_no" name="q12_whatsapp_usage" value="0" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                    <label for="q12_whatsapp_usage_no">Non</label>
+                </div>
+
+                <label for="q12_whatsapp_business_usage" class="block mt-6 font-medium mb-2">Vous vous en servez aussi pour votre commerce, avec vos clients ou vos fournisseurs ?</label>
+                <textarea id="q12_whatsapp_business_usage" name="q12_whatsapp_business_usage" rows="2" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+                <label for="q13_whatsapp_assistant_feedback" class="block mt-6 font-medium mb-2">13. Imaginez maintenant un petit assistant sur WhatsApp... Qu'en pensez-vous ?</label>
+                <textarea id="q13_whatsapp_assistant_feedback" name="q13_whatsapp_assistant_feedback" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 5: La disposition à payer</h2>
+                <label for="q14_price_willing_to_pay" class="block mt-6 font-medium mb-2">14. Combien seriez-vous prêt(e) à payer par mois pour ce service ?</label>
+                <div class="flex items-center gap-4">
+                    <input type="number" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay" min="0" max="500000" step="5000" value="50000" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <label for="q15_conditions_for_paying" class="block mt-6 font-medium mb-2">15. Et si vous ne seriez pas prêt(e) à payer, qu'est-ce qu'il devrait faire pour que ce soit intéressant, et à quel prix ?</label>
+                <textarea id="q15_conditions_for_paying" name="q15_conditions_for_paying" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold mt-8 pb-2 border-b border-gray-200">Partie 6: Test du produit</h2>
+                <label for="q16_whatsapp_number" class="block mt-6 font-medium mb-2">16. Est-ce que je peux avoir votre numéro WhatsApp pour vous envoyer une version gratuite à tester?</label>
+                <input type="text" id="q16_whatsapp_number" name="q16_whatsapp_number" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="q17_other_interested_businesses" class="block mt-6 font-medium mb-2">17. Connaissez-vous d'autres commerces qui pourraient être intéressés par ce type d'outil?</label>
+                <textarea id="q17_other_interested_businesses" name="q17_other_interested_businesses" rows="4" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div class="mt-8">
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md text-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Submit</button>
+            </div>
         </form>
     </div>
 </body>
