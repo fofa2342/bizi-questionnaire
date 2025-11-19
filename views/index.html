@@ -48,7 +48,7 @@
         input[type="range"] {
             padding: 0;
         }
-        textarea:focus, input:focus {
+        textarea:focus, input:focus, input[type="range"]:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
@@ -77,7 +77,7 @@
             background-color: #f3f4f6;
             padding: 0.5em 1em;
             border-radius: 0.375em;
-            min-width: 80px;
+            min-width: 100px; /* Adjusted min-width for larger numbers */
             text-align: center;
         }
         @media (max-width: 600px) {
@@ -92,6 +92,10 @@
             }
             h2 {
                 font-size: 1.2em;
+            }
+            .slider-container {
+                flex-direction: column; /* Stack items vertically */
+                align-items: stretch; /* Stretch items to fill width */
             }
         }
     </style>
@@ -140,9 +144,11 @@
             <label for="q11_ideal_assistant_features">11. Si vous aviez un assistant idéal pour vous aider dans votre boutique, qu'aimeriez-vous qu'il fasse ?</label>
             <textarea id="q11_ideal_assistant_features" name="q11_ideal_assistant_features" rows="4" required></textarea>
 
-            <label for="q12_whatsapp_usage">12. Vous utilisez WhatsApp ?</label>
-            <input type="radio" id="q12_whatsapp_usage_yes" name="q12_whatsapp_usage" value="1" required> Oui
-            <input type="radio" id="q12_whatsapp_usage_no" name="q12_whatsapp_usage" value="0"> Non
+            <label>12. Vous utilisez WhatsApp ?</label>
+            <div>
+                <input type="radio" id="q12_whatsapp_usage_yes" name="q12_whatsapp_usage" value="1" required> <label for="q12_whatsapp_usage_yes">Oui</label>
+                <input type="radio" id="q12_whatsapp_usage_no" name="q12_whatsapp_usage" value="0"> <label for="q12_whatsapp_usage_no">Non</label>
+            </div>
 
             <label for="q12_whatsapp_business_usage">Vous vous en servez aussi pour votre commerce, avec vos clients ou vos fournisseurs ?</label>
             <textarea id="q12_whatsapp_business_usage" name="q12_whatsapp_business_usage" rows="2" required></textarea>
@@ -153,8 +159,8 @@
             <h2>Partie 5: La disposition à payer</h2>
             <label for="q14_price_willing_to_pay">14. Combien seriez-vous prêt(e) à payer par mois pour ce service ?</label>
             <div class="slider-container">
-                <input type="range" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay" min="0" max="50000" step="500" value="10000" oninput="priceOutput.value = this.value + ' FCFA'">
-                <output name="priceOutput" for="q14_price_willing_to_pay">10000 FCFA</output>
+                <input type="range" id="q14_price_willing_to_pay" name="q14_price_willing_to_pay" min="0" max="500000" step="5000" value="50000" oninput="priceOutput.value = this.value + ' FCFA'">
+                <output id="priceOutput" for="q14_price_willing_to_pay">50000 FCFA</output>
             </div>
 
             <label for="q15_conditions_for_paying">15. Et si vous ne seriez pas prêt(e) à payer, qu'est-ce qu'il devrait faire pour que ce soit intéressant, et à quel prix ?</label>
